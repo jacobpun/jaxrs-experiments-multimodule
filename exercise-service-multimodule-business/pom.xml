@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.punnoose</groupId>
 		<artifactId>exercise-service-multimodule</artifactId>
-		<version>1.1-SNAPSHOT</version>
+		<version>1.1</version>
 	</parent>
 	<artifactId>exercise-service-multimodule-business</artifactId>
 	<dependencies>
@@ -12,7 +12,7 @@
 		<dependency>
 			<groupId>org.punnoose</groupId>
 			<artifactId>exercise-service-multimodule-repository</artifactId>
-			<version>1.1-SNAPSHOT</version>
+			<version>1.1</version>
 		</dependency>
 
 		<!-- Dozer -->
