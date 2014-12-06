@@ -7,7 +7,8 @@ import org.dozer.Mapper;
 
 public class DozerHelper {
 
-	public static <T, U> ArrayList<U> map(final Mapper mapper,
+	private DozerHelper() {}
+	public static <T, U> List<U> map(final Mapper mapper,
 			final List<T> source, final Class<U> destType) {
 
 		final ArrayList<U> dest = new ArrayList<U>();

@@ -27,7 +27,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 @Path("/activities")
 public class ActivityResource {
 
-	Logger logger = LoggerFactory.getLogger(ActivityResource.class);
+	private Logger logger = LoggerFactory.getLogger(ActivityResource.class);
 
 	@Autowired
 	private ActivityService service;

@@ -27,13 +27,13 @@ import org.springframework.dao.DataIntegrityViolationException;
 @Path("/users")
 public class UserResource {
 
-	Logger logger = LoggerFactory.getLogger(UserResource.class);
+	private Logger logger = LoggerFactory.getLogger(UserResource.class);
 
 	@Autowired
 	private UserService service;
 
 	@Context
-	UriInfo uriInfo;
+	private UriInfo uriInfo;
 
 	@POST
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })

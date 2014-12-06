@@ -4,10 +4,10 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="exercise-service-multimodule-business-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/exercise-service-multimodule-business/exercise-service-multimodule-business">
+        <dependent-module archiveName="exercise-service-multimodule-business-0.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/exercise-service-multimodule-business/exercise-service-multimodule-business">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="exercise-service-multimodule-repository-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/exercise-service-multimodule-repository/exercise-service-multimodule-repository">
+        <dependent-module archiveName="exercise-service-multimodule-repository-0.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/exercise-service-multimodule-repository/exercise-service-multimodule-repository">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/exercise-service-multimodule-web/target/classes"/>
