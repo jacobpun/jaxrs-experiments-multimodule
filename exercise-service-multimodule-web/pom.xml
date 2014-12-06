@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.punnoose</groupId>
 		<artifactId>exercise-service-multimodule</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 	<artifactId>exercise-service-multimodule-web</artifactId>
 	<packaging>war</packaging>
@@ -15,7 +15,7 @@
 		<dependency>
 			<groupId>org.punnoose</groupId>
 			<artifactId>exercise-service-multimodule-business</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 		
 		<!-- Servlet API -->
