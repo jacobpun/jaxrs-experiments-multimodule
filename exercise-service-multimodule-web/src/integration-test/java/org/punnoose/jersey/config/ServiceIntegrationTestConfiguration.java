@@ -22,7 +22,6 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Transactional;
 
 @Configuration
 @EnableJpaRepositories(basePackages = { "org.punnoose.jersey.repository" })
@@ -37,8 +36,7 @@ public class ServiceIntegrationTestConfiguration {
 				.asList(new String[] { "dozer-bean-mappings.xml" }));
 		return mapper;
 	}
-	
-
+		
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();

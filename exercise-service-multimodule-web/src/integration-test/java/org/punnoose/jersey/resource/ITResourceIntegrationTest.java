@@ -3,12 +3,12 @@ package org.punnoose.jersey.resource;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static org.punnoose.jersey.resource.testdata.TestDataFixture.USER_1;
-import static org.punnoose.jersey.resource.testdata.TestDataFixture.USER_1_ACTIVITY_1;
-import static org.punnoose.jersey.resource.testdata.TestDataFixture.USER_1_ACTIVITY_2;
-import static org.punnoose.jersey.resource.testdata.TestDataFixture.USER_2;
-import static org.punnoose.jersey.resource.testdata.TestDataFixture.USER_2_ACTIVITY_1;
-import static org.punnoose.jersey.resource.testdata.TestDataFixture.USER_3;
+import static org.punnoose.jersey.resource.testdata.IntegrationTestDataFixture.USER_1;
+import static org.punnoose.jersey.resource.testdata.IntegrationTestDataFixture.USER_1_ACTIVITY_1;
+import static org.punnoose.jersey.resource.testdata.IntegrationTestDataFixture.USER_1_ACTIVITY_2;
+import static org.punnoose.jersey.resource.testdata.IntegrationTestDataFixture.USER_2;
+import static org.punnoose.jersey.resource.testdata.IntegrationTestDataFixture.USER_2_ACTIVITY_1;
+import static org.punnoose.jersey.resource.testdata.IntegrationTestDataFixture.USER_3;
 
 import java.util.Map;
 
@@ -30,7 +30,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class ResourceIntegrationTest extends JerseyTest {
+public class ITResourceIntegrationTest extends JerseyTest {
 
 	private Long userid1, userid2;
 	private Long userid1_activityid1, userid1_activityid2, userid2_activityid1;
@@ -90,7 +90,7 @@ public class ResourceIntegrationTest extends JerseyTest {
 				.readEntity(UserDto.class)
 				.getId();
 	}
-	
+
 	private Long createActivity(Long userId, ActivityDto activity) {
 		Entity<ActivityDto> user1Activity1 = Entity.entity(activity, APPLICATION_JSON);
 		return target("users/" + userId + "/activities")

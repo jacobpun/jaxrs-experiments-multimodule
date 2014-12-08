@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.dozer.Mapper;
 
-public class DozerHelper {
+public final class DozerHelper {
 
 	private DozerHelper() {}
 	public static <T, U> List<U> map(final Mapper mapper,

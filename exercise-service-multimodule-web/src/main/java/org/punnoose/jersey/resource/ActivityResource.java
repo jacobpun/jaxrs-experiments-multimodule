@@ -39,9 +39,9 @@ public class ActivityResource {
 		List<ActivityDto> activityDtos;
 		
 		if (descriptions == null || descriptions.size() == 0) {			
-			activityDtos = service.findAll();
+			activityDtos = getService().findAll();
 		} else {
-			activityDtos = service.findByDescriptionIn(descriptions);
+			activityDtos = getService().findByDescriptionIn(descriptions);
 		}
 		
 		return Response.ok()
@@ -55,7 +55,7 @@ public class ActivityResource {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response getActivities(SearchCriteria searchCriteria) {
 		
-		List<ActivityDto> activityDtos = service.searchActivity(searchCriteria);
+		List<ActivityDto> activityDtos = getService().searchActivity(searchCriteria);
 
 		return Response.ok()
 				.entity(new GenericEntity<List<ActivityDto>>(activityDtos){})
@@ -76,7 +76,7 @@ public class ActivityResource {
 		validateActivityId(activityId);
 
 		// Fetch the activity from the service
-		ActivityDto activity = service.findActivity(activityId);
+		ActivityDto activity = getService().findActivity(activityId);
 
 		// Check if the fetched activity is null. If so, return HTTP 404 error
 		if (activity == null) {
@@ -103,7 +103,7 @@ public class ActivityResource {
 		validateActivityId(activityId);
 
 		// Fetch the user from the service
-		UserDto user = service.findUser(activityId);
+		UserDto user = getService().findUser(activityId);
 
 		// Check if the fetched user is null. If so, return HTTP 404 error
 		if (user == null) {
@@ -130,7 +130,7 @@ public class ActivityResource {
 
 		// Delete the activity
 		try {
-			service.deleteActivity(activityId);
+			getService().deleteActivity(activityId);
 		} catch (EmptyResultDataAccessException e) {
 			logger.info(
 					"No activity found for the ID {}. Returning HTTP error 404.",
@@ -156,5 +156,15 @@ public class ActivityResource {
 
 	private boolean isInvalidActivityId(Long activityId) {
 		return activityId == null || activityId <= 0;
+	}
+
+
+	public ActivityService getService() {
+		return service;
+	}
+
+
+	public void setService(ActivityService service) {
+		this.service = service;
 	}
 }

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.punnoose.jersey.dto.ActivityDto;
 import org.punnoose.jersey.dto.UserDto;
 
-public class TestDataFixture {
+public class IntegrationTestDataFixture {
 
 	public static final UserDto USER_1;
 	public static final UserDto USER_2;
@@ -14,7 +14,7 @@ public class TestDataFixture {
 	
 	public static final ActivityDto USER_1_ACTIVITY_1;
 	public static final ActivityDto USER_1_ACTIVITY_2;
-	public static final ActivityDto USER_2_ACTIVITY_1;	
+	public static final ActivityDto USER_2_ACTIVITY_1;
 	
 	static{
 		

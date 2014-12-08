@@ -7,7 +7,7 @@
 	</appender>
 	<appender name="FILE"
 	class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/home/punnoose/tmp/logs/exercise-service.log</file>
+		<file>/home/punnoose/tmp/logs/${$og_file_name}</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
 		</encoder>
