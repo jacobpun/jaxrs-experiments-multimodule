@@ -18,8 +18,6 @@ import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.punnoose.jersey.ExerciseService;
 import org.punnoose.jersey.config.ServiceIntegrationTestConfiguration;

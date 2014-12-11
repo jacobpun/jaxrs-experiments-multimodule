@@ -2,6 +2,8 @@ package org.punnoose.jersey.resource;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -36,9 +38,9 @@ public class UserResource {
 	private UriInfo uriInfo;
 
 	@POST
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({  MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response create(UserDto userDto) {
+	public Response create(@Valid @NotNull UserDto userDto) {
 		UserDto createdUser = service.create(userDto);
 		URI userUri = getUriForUser(createdUser);
 		logger.info("Created user: {}", createdUser);
@@ -47,7 +49,7 @@ public class UserResource {
 
 	@GET
 	@Path("{userId}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response get(@PathParam("userId")Long userId) {
 
 		// Check if the user ID is valid. If not, return HTTP 400 error
@@ -74,10 +76,10 @@ public class UserResource {
 
 	@POST
 	@Path("{userId}/activities")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response addActivity(@PathParam("userId") Long userId,
-			ActivityDto activityDto) {
+			@Valid @NotNull ActivityDto activityDto) {
 		try {
 			ActivityDto createdActivity = service.addActivity(userId,
 					activityDto);

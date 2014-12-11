@@ -33,7 +33,7 @@ public class ActivityResource {
 	private ActivityService service;
 
 	@GET
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response getActivities(@QueryParam(value = "description") List<String> descriptions) {
 
 		List<ActivityDto> activityDtos;
@@ -52,7 +52,7 @@ public class ActivityResource {
 	
 	@POST
 	@Path("/search")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response getActivities(SearchCriteria searchCriteria) {
 		
 		List<ActivityDto> activityDtos = getService().searchActivity(searchCriteria);
@@ -69,7 +69,7 @@ public class ActivityResource {
 	 */
 	@GET
 	@Path("{activityId}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response getActivity(@PathParam("activityId") Long activityId) {
 
 		// Check if the activity ID is valid. If not, return HTTP 400 error
@@ -96,7 +96,7 @@ public class ActivityResource {
 
 	@GET
 	@Path("{activityId}/user")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response getUser(@PathParam("activityId") Long activityId) {
 
 		// Check if the activity ID is valid. If not, return HTTP 400 error
@@ -122,7 +122,7 @@ public class ActivityResource {
 
 	@DELETE
 	@Path("{activityId}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response deleteActivity(@PathParam("activityId") Long activityId) {
 
 		// Check if the activity ID is valid. If not, return HTTP 400 error

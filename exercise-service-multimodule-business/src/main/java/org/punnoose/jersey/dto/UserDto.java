@@ -3,6 +3,7 @@ package org.punnoose.jersey.dto;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class UserDto {
 	private Long id;
+	@NotNull(message="Name should be valid")
 	private String name;
 	private Map<String, String> extras = new HashMap<String, String>();
 	

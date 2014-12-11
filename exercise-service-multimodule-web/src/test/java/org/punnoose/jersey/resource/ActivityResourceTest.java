@@ -48,7 +48,7 @@ public class ActivityResourceTest extends JerseyTest {
 		Response actity = target("activities/" + NON_EXISTING_ACTIVITY_ID)
 				.request(APPLICATION_JSON).get();
 
-		// Assert that the response code id 404
+		// Assert that the response code is 404
 		assertThat(actity.getStatus(),
 				is(Response.Status.NOT_FOUND.getStatusCode()));
 	}
@@ -61,7 +61,7 @@ public class ActivityResourceTest extends JerseyTest {
 		Response actity = target("activities/" + INVALID_ACTIVITY_ID).request(
 				APPLICATION_JSON).get();
 		
-		// Assert that the response code id 400
+		// Assert that the response code is 400
 		assertThat(actity.getStatus(),
 				is(Response.Status.BAD_REQUEST.getStatusCode()));
 	}
@@ -71,7 +71,7 @@ public class ActivityResourceTest extends JerseyTest {
 
 		final Long NON_EXISTING_ACTIVITY_ID = 1L;
 
-		// Configure the mocked service to throw exception when a non-existing id is passed to the delete method
+		// Configure the mocked service to throw exception when a non-existing is is passed to the delete method
 		ActivityService mockService = context.getBean(ActivityService.class);
 		Mockito.doThrow(EmptyResultDataAccessException.class).when(mockService)
 				.deleteActivity(NON_EXISTING_ACTIVITY_ID);
@@ -80,7 +80,7 @@ public class ActivityResourceTest extends JerseyTest {
 		Response actity = target("activities/" + NON_EXISTING_ACTIVITY_ID)
 				.request(APPLICATION_JSON).delete();
 
-		// Assert that the response code id 404
+		// Assert that the response code is 404
 		assertThat(actity.getStatus(),
 				is(Response.Status.NOT_FOUND.getStatusCode()));
 	
@@ -95,9 +95,8 @@ public class ActivityResourceTest extends JerseyTest {
 		Response actity = target("activities/" + INVALID_ACTIVITY_ID).request(
 				APPLICATION_JSON).delete();
 		
-		// Assert that the response code id 400
+		// Assert that the response code is 400
 		assertThat(actity.getStatus(),
 				is(Response.Status.BAD_REQUEST.getStatusCode()));
-	}
-
+	}	
 }
