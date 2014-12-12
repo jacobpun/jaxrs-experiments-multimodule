@@ -13,11 +13,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.EntityTag;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.punnoose.jersey.dto.ActivityDto;
 import org.punnoose.jersey.dto.UserDto;
 import org.punnoose.jersey.service.UserService;
@@ -34,6 +37,9 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 
+	@Context
+	private Request request;
+	
 	@Context
 	private UriInfo uriInfo;
 
@@ -67,11 +73,19 @@ public class UserResource {
 					+ " not found.");
 		}
 
+		EntityTag eTag = generateEntityTag(user);
+		Response.ResponseBuilder rb = request.evaluatePreconditions(eTag);
+		
+		if(rb!= null) {
+			logger.debug("Precondition failed while GETting the userId ID {}. ", userId);
+			return rb.build();
+		}
+		
 		// Return the user
 		logger.debug(
 				"Returning userId for the userId ID {}. userId: {}.",
 				userId, user.toString());
-		return Response.ok().entity(user).build();
+		return Response.ok().tag(eTag).entity(user).build();
 	}
 
 	@POST
@@ -121,5 +135,9 @@ public class UserResource {
 
 	private boolean isInvalidUserId(Long userId) {
 		return userId == null || userId <= 0;
+	}
+	
+	private EntityTag generateEntityTag(UserDto user) {
+		return new EntityTag(DigestUtils.md5Hex(user.getName()));
 	}
 }
