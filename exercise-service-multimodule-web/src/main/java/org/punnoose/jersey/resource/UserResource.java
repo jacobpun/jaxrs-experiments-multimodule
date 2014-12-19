@@ -57,7 +57,9 @@ public class UserResource {
 	@Path("{userId}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response get(@PathParam("userId")Long userId) {
-
+		
+		logger.debug("Received request to GET user with ID {}", userId);
+		
 		// Check if the user ID is valid. If not, return HTTP 400 error
 		validateUserId(userId);
 
@@ -73,9 +75,9 @@ public class UserResource {
 					+ " not found.");
 		}
 
+		// Evaluate preconditions
 		EntityTag eTag = generateEntityTag(user);
 		Response.ResponseBuilder rb = request.evaluatePreconditions(eTag);
-		
 		if(rb!= null) {
 			logger.debug("Precondition failed while GETting the userId ID {}. ", userId);
 			return rb.build();

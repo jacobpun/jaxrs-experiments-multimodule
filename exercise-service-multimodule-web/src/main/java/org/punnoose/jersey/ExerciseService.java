@@ -1,4 +1,3 @@
-
 package org.punnoose.jersey;
 
 import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
@@ -14,10 +13,13 @@ import com.fasterxml.jackson.jaxrs.xml.JacksonXMLProvider;
 
 public class ExerciseService extends ResourceConfig {
 	public ExerciseService() {
-		packages("org.punnoose.jersey.resource");
+		packages("org.punnoose.jersey.resource", "org.punnoose.jersey.filter");
 		// register(EntityFilteringFeature.class);
-		JacksonJsonProvider json = new JacksonJsonProvider().configure(WRITE_DATES_AS_TIMESTAMPS, false).configure(INDENT_OUTPUT, true);
-		JacksonXMLProvider xml = new JacksonXMLProvider().configure(INDENT_OUTPUT, true);
+		JacksonJsonProvider json = new JacksonJsonProvider().configure(
+				WRITE_DATES_AS_TIMESTAMPS, false)
+				.configure(INDENT_OUTPUT, true);
+		JacksonXMLProvider xml = new JacksonXMLProvider().configure(
+				INDENT_OUTPUT, true);
 		register(json);
 		register(xml);
 		EncodingFilter.enableFor(this, GZipEncoder.class);

@@ -9,7 +9,7 @@
 	class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>/home/punnoose/tmp/logs/${log_file_name}</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] [%X{request-id}] %-5level %logger{36} - %msg%n</Pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<FileNamePattern>/home/punnoose/tmp/logs/log.%i.zip</FileNamePattern>
@@ -26,7 +26,7 @@
 	<logger name="org.hibernate.type" level="TRACE" />
 	<logger name="org.hibernate.SQL" level="DEBUG" />-->
 
-	<root level="INFO">
+	<root level="DEBUG">
 		<appender-ref ref="FILE" />
 	</root>
 </configuration>

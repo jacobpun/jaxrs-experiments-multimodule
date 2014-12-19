@@ -6,12 +6,17 @@ import org.punnoose.jersey.dto.UserDto;
 import org.punnoose.jersey.model.Activity;
 import org.punnoose.jersey.model.User;
 import org.punnoose.jersey.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
+
+	private Logger logger = LoggerFactory.getLogger(UserService.class);
+	
 	@Autowired
 	private UserRepository repo;
 
@@ -37,9 +42,11 @@ public class UserService {
 		User user = repo.findOne(userId);
 		
 		if (user == null) {
+			logger.debug("User ID {} not found in the database", userId);
 			return null;
 		}
 		
+		logger.debug("Rertrieverd user entity from repository for the user ID {}", userId);
 		return mapper.map(user, UserDto.class);
 	}
 }

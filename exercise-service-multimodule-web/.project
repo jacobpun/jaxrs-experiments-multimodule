@@ -3,6 +3,9 @@
 	<name>exercise-service-multimodule-web</name>
 	<comment></comment>
 	<projects>
+		<project>exercise-service-multimodule</project>
+		<project>exercise-service-multimodule-repository</project>
+		<project>exercise-service-multimodule-business</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
